@@ -35,3 +35,6 @@ Proyek ini ditujukan untuk:
 
 ## Struktur Program
 - Nanti kita isi
+
+
+## jangan lupa instal requirements.txt
