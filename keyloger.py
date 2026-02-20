@@ -128,7 +128,7 @@ class SimpleKeylogger:
         print("\033[1;37m" + "=" * 70 + "\033[0m")
     
     def start(self):
-        # Clear screen (opsional)
+       
         os.system('clear' if os.name == 'posix' else 'cls')
         
         
@@ -168,4 +168,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# plenger
