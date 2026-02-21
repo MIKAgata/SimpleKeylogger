@@ -99,7 +99,7 @@ class SimpleKeylogger:
             
             
             if key == keyboard.Key.esc:
-                # Tampilkan kata terakhir jika ada
+              
                 if self.current_word:
                     self.display_word()
                 print("\n\033[1;31m[!]\033[0m ESC detected, stopping keylogger...")
@@ -144,7 +144,7 @@ class SimpleKeylogger:
             with keyboard.Listener(on_press=self.on_press) as listener:
                 listener.join()
         finally:
-            # Tampilkan footer saat selesai
+
             self.print_footer()
 
 
