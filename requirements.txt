@@ -1,3 +1,2 @@
 pynput
-
-# nanti kita tambah
+python-dotenv
