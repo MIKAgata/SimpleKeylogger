@@ -212,5 +212,6 @@ def main():
         print(f"\n\033[1;31m[!]\033[0m Error: {str(e)}\033[0m")
         sys.exit(1)
 
+
 if __name__ == "__main__":
     main()
