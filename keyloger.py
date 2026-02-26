@@ -189,10 +189,9 @@ def main():
     # ===== KONFIGURASI TELEGRAM =====
     # Ganti dengan token dan chat ID Anda
     # Ambil dari environment variable
-    # TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-    # TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-    TELEGRAM_TOKEN = ("7961103690:AAG166JEzMenSKnNyle5wQgOCyqNNFR-1c4")
-    TELEGRAM_CHAT_ID = ("7430165038")
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+   
 
     # Alternatif: gunakan environment variable untuk keamanan
     # import os
