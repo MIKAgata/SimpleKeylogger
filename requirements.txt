@@ -1,3 +1,7 @@
 pynput
 requests
 python-dotenv
+
+
+# tulis pada terminal command berikut
+# pip install requiments.txt
