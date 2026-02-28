@@ -19,17 +19,9 @@ Risiko keamanan dari aplikasi yang memonitor input
 
 Simulasi metode data exfiltration untuk tujuan defensive analysis
 
-### Fokus Keamanan
-Dalam konteks defensive security, proyek ini membantu memahami:
-
-Bagaimana malware jenis keylogger bekerja
-
-Cara mendeteksi aktivitas input monitoring yang mencurigakan
-
-Pola komunikasi outbound (misalnya HTTP request ke API)
-
-Pentingnya permission dan privilege control
-
+### Fitur
+1.Mendeteksi segala inpu keyboard
+2.Dapat berjalan dilatar belakang tanpa disadari
 ### Etika dan Legalitas
 Sebelum melakukan pengujian:
 
@@ -64,10 +56,10 @@ Scope yang jelas
 
 Kalau kamu mau, aku bisa bantu ubah project ini jadi:
 
-🔎 Simulator deteksi keylogger (lebih kuat untuk portofolio)
+ Simulator deteksi keylogger (lebih kuat untuk portofolio)
 
-🛡 Tool monitoring proses mencurigakan
+ Tool monitoring proses mencurigakan
 
-📊 Analyzer traffic HTTP untuk belajar threat detection
+ Analyzer traffic HTTP untuk belajar threat detection
 
-🧪 Lab malware analysis berbasis VM
+ Lab malware analysis berbasis VM
