@@ -22,44 +22,4 @@ Simulasi metode data exfiltration untuk tujuan defensive analysis
 ### Fitur
 1.Mendeteksi segala inpu keyboard
 2.Dapat berjalan dilatar belakang tanpa disadari
-### Etika dan Legalitas
-Sebelum melakukan pengujian:
 
-Gunakan hanya pada perangkat milik sendiri
-
-Lakukan di lab environment (VM / isolated system)
-
-Jangan pernah menguji pada perangkat orang lain
-
-Pahami hukum yang berlaku di negara Anda
-
-Di Indonesia, penggunaan tanpa izin dapat melanggar UU ITE dan hukum pidana terkait akses ilegal dan pencurian data.
-
-### Catatan untuk Pengembangan Karier
-Memahami cara kerja serangan adalah bagian dari menjadi:
-
-Security Analyst
-
-Malware Researcher
-
-SOC Engineer
-
-Penetration Tester (bersertifikasi dan berizin)
-
-Namun profesional keamanan bekerja berdasarkan:
-
-Kontrak
-
-Legal authorization
-
-Scope yang jelas
-
-Kalau kamu mau, aku bisa bantu ubah project ini jadi:
-
- Simulator deteksi keylogger (lebih kuat untuk portofolio)
-
- Tool monitoring proses mencurigakan
-
- Analyzer traffic HTTP untuk belajar threat detection
-
- Lab malware analysis berbasis VM
