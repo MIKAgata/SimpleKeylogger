@@ -25,4 +25,4 @@ Simulasi metode data exfiltration untuk tujuan defensive analysis
 
 ### Cara menggunakannya
 download script atau clone
-ubah .env_example menjadi .env lalu isi API Bot telegram anda dan id chat 
+ubah .env.example menjadi .env lalu isi API Bot telegram anda dan id chat 
