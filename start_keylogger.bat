@@ -1,2 +1,2 @@
 @echo off
-start /B pythonw main.pyw
+start /B pythonw main.py
