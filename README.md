@@ -20,7 +20,7 @@ Risiko keamanan dari aplikasi yang memonitor input
 Simulasi metode data exfiltration untuk tujuan defensive analysis
 
 ### Fitur
-1.Mendeteksi segala inpu keyboard
+1.Mendeteksi segala inpu keyboard </br>
 2.Dapat berjalan dilatar belakang tanpa disadari
 
 ### Cara menggunakannya
