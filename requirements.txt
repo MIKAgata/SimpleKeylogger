@@ -8,4 +8,4 @@ configparser
 
 
 # tulis pada terminal command berikut
-# pip install requiments.txt
+# pip install -r requiments.txt
