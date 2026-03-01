@@ -1,6 +1,10 @@
 pynput
 requests
 python-dotenv
+cryptography
+Pillow
+pyperclip
+configparser
 
 
 # tulis pada terminal command berikut
