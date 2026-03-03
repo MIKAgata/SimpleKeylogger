@@ -1,6 +1,6 @@
 # Simple Keylogger
 ### ⚠ Disclaimer
-Proyek ini dibuat semata-mata untuk tujuan pembelajaran keamanan siber (cybersecurity research) dalam lingkungan yang terkontrol dan dengan persetujuan penuh (explicit consent).
+Proyek ini dibuat semata-mata untuk tujuan pembelajaran keamanan siber (cybersecurity research) dalam lingkungan yang terkontrol dan dengan persetujuan penuh (explicit consent). dan code ini masih dalam tahap pengembangan karena masih terdapat error
 
 Segala bentuk penggunaan tanpa izin pemilik perangkat merupakan pelanggaran hukum dan etika.
 
