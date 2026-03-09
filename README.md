@@ -1,4 +1,6 @@
 # Simple Keylogger
+
+### repository masih dalam tahap pengembangan jangan digunakan terlebih dahuli
 ### ⚠ Disclaimer
 Proyek ini dibuat semata-mata untuk tujuan pembelajaran keamanan siber (cybersecurity research) dalam lingkungan yang terkontrol dan dengan persetujuan penuh (explicit consent). dan code ini masih dalam tahap pengembangan karena masih terdapat error
 
@@ -26,6 +28,8 @@ Simulasi metode data exfiltration untuk tujuan defensive analysis
 ### Cara menggunakannya
 download script atau clone
 ubah .env.example menjadi .env lalu isi API Bot telegram anda dan id chat 
+
+
 
 
 ## untuk sekarang script masih terdapat error, nanti akan segera di fix. lagi banyak tugas soalnya
