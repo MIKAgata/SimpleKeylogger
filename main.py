@@ -1,7 +1,7 @@
 import sys
 import os
-from keylogger.config import Config
-from keylogger.core import AdvancedKeylogger
+from config import Config
+from core import AdvancedKeylogger
 
 def main():
     # Load config from .env or config.ini
