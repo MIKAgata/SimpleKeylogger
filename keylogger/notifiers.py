@@ -1,4 +1,3 @@
-# keylogger/notifiers.py
 import requests
 
 class TelegramNotifier:
