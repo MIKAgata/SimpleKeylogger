@@ -1,5 +1,3 @@
-
-
 from pynput import keyboard
 import datetime
 import sys
