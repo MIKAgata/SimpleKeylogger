@@ -1,26 +1,26 @@
 # Educational Python Keylogger (Telegram Enabled)
 
-Simple educational keylogger written in Python.  
-This project demonstrates how keyboard events can be captured, processed, stored, and optionally sent to a remote service (Telegram).
+Keylogger edukatif sederhana yang ditulis dalam Python.
 
-The goal of this project is **learning about input monitoring, logging systems, and basic data exfiltration techniques** often studied in cybersecurity.
+Proyek ini mendemonstrasikan bagaimana peristiwa keyboard dapat ditangkap, diproses, disimpan, dan secara opsional dikirim ke layanan jarak jauh (Telegram).
 
-This project is for **educational and research purposes only**.
+Tujuan proyek ini adalah **mempelajari tentang pemantauan input, sistem pencatatan, dan teknik eksfiltrasi data dasar** yang sering dipelajari dalam keamanan siber.
+
+Proyek ini hanya untuk **tujuan pendidikan dan penelitian**.
 
 ---
 
-## Features
+## Fitur
 
-- Capture keyboard input using `pynput`
-- Detect and display typed words
-- Log keystrokes with timestamps
-- Save logs to a local file
-- Send captured logs to **Telegram**
-- Buffered logging system (reduces file writes)
-- Periodic log flushing using threading
-- Colored terminal interface
-- Graceful shutdown using `ESC`
-
+- Menangkap input keyboard menggunakan `pynput`
+- Mendeteksi dan menampilkan kata-kata yang diketik
+- Mencatat penekanan tombol dengan stempel waktu
+- Menyimpan log ke file lokal
+- Mengirim log yang ditangkap ke **Telegram**
+- Sistem pencatatan buffer (mengurangi penulisan file)
+- Pembersihan log berkala menggunakan threading
+- Antarmuka terminal berwarna
+- Penutupan yang aman menggunakan `ESC`
 ---
 
 ## Demo Output
