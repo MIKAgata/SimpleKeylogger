@@ -25,7 +25,7 @@ Proyek ini hanya untuk **tujuan pendidikan dan penelitian**.
 
 ## Demo Output
 
-Example terminal output:
+Contoh terminal output:
 ```bash
 [20:00:02] h
 [20:00:02] e
@@ -113,21 +113,21 @@ Run:
 python main.py
 ```
 
-Program flow:
+Alur program:
 
-1. Initialize keylogger
+1. Inisialisasi keylogger
 
-2. Display banner
+2. Tampilkan banner
 
-3. Start keyboard listener
+3. Mulai pendengar keyboard
 
-4. Capture keystrokes
+4. Rekam penekanan tombol
 
-5. Save logs to file
+5. Simpan log ke file
 
-6. Optionally send logs to Telegram
+6. Opsional kirim log ke Telegram
 
-7. Press ESC to stop the keylogger.
+7. Tekan ESC untuk menghentikan keylogger.
 
 
 ## Log Format
@@ -144,14 +144,16 @@ Example log file (keylog.txt):
 [20:11:03] [WORD] hello
 ```
 
-## How It Works
-1. pynput listens for keyboard events
-2. Each key press is processed in on_press()
-3. Characters are appended to a buffer
-4. When the buffer reaches a limit:
-    - It is written to keylog.txt
-    - It can be sent to Telegram
-5. Words are detected when:
-    - Space
-    - Enter
-    - Tab
+## Cara Kerjanya
+1. pynput mendengarkan peristiwa keyboard
+2. Setiap penekanan tombol diproses di on_press()
+3. Karakter ditambahkan ke buffer
+4. Ketika buffer mencapai batas:
+
+- Ditulis ke keylog.txt
+- Dapat dikirim ke Telegram
+5. Kata-kata terdeteksi ketika:
+
+- Spasi
+- Enter
+- Tab
